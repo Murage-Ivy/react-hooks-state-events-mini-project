@@ -14,9 +14,7 @@ function App() {
     text:"Wash the dishes",
     category: "Code"
   })
-
- 
-
+  
   function handleDelete(taskName) {
     const newTaskData = taskData.filter(task => task.text !== taskName);
     // console.log("This is the task", taskName)
@@ -62,23 +60,24 @@ function App() {
 
   function onTaskFormSubmit(event) {
     event.preventDefault();
-    setTaskData([
-      ...taskData,
-      newItem
-    ])
-    console.log("This is the rendered: ", newItem)
-    setNewItem({
-      text:'',
-      category:'Code'
-    })
+      setTaskData([
+        ...taskData,
+        newItem
+      ])
+      console.log("This is the rendered: ", newItem)
+      setNewItem({
+        text:'',
+        category:'Code'
+      })
+    
 
   }
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categoriesList} onClickCategory={handleCategoryList} />
-      <NewTaskForm  categories = {categoriesList} newItem={newItem} onChangeAddItem={handleInputChange} onTaskFormSubmit={onTaskFormSubmit}/>
-      <TaskList tasks={taskData} onDeleteTask={handleDelete} />
+      <NewTaskForm  categories = {categoriesList} newItem={newItem} onChangeAddItem={handleInputChange} onTaskFormSubmit={onTaskFormSubmit}  />
+      <TaskList tasks={taskData} onDeleteTask={handleDelete}  />
     </div>
   );
 }
